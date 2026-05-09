@@ -55,26 +55,31 @@ class MinHeap {
     return [...this._data].sort((a, b) => b.score - a.score);
   }
 }
-function computeScore(notification, minTs, maxTs) {
-  const typeWeight = TYPE_WEIGHT[notification.Type] ?? 1;
-  const ts = new Date(notification.Timestamp).getTime();
+const computeScore = (notif, minTs, maxTs) => {
+  const weight = TYPE_WEIGHT[notif.Type] || 1;
+  const ts = new Date(notif.Timestamp).getTime();
   const recency = maxTs === minTs ? 1 : (ts - minTs) / (maxTs - minTs);
-  return typeWeight * 1000 + Math.round(recency * 100);
-}
-async function getTopN(n = 10) {
-  await Log("backend", "info", "service", `Priority inbox: fetching top ${n}`);
+  return weight * 1000 + Math.round(recency * 100);
+};
+
+const getTopN = async (n = 10) => {
+  await Log("backend", "info", "service", `fetching top ${n} from inbox`);
   const notifications = await fetchNotifications();
-  if (notifications.length === 0) {
-    await Log("backend", "warn", "service", "No notifications to rank");
+  
+  if (!notifications || notifications.length === 0) {
+    await Log("backend", "warn", "service", "inbox empty");
     return [];
   }
-  const timestamps = notifications.map((n) => new Date(n.Timestamp).getTime());
+  
+  const timestamps = notifications.map(n => new Date(n.Timestamp).getTime());
   const minTs = Math.min(...timestamps);
   const maxTs = Math.max(...timestamps);
+  
   const heap = new MinHeap();
   for (const notif of notifications) {
     const score = computeScore(notif, minTs, maxTs);
     const entry = { score, notif };
+    
     if (heap.size < n) {
       heap.push(entry);
     } else if (score > heap.peek().score) {
@@ -82,14 +87,10 @@ async function getTopN(n = 10) {
       heap.push(entry);
     }
   }
-  await Log(
-    "backend",
-    "info",
-    "service",
-    `Priority inbox: top ${heap.size} selected`
-  );
+  
+  await Log("backend", "info", "service", `selected top ${heap.size} items`);
   return heap.toSortedDesc().map(({ score, notif }) => ({ ...notif, priorityScore: score }));
-}
+};
 if (require.main === module) {
   const n = parseInt(process.argv[2] || "10", 10);
   console.log(`\n🔔  Priority Inbox — Top ${n} Notifications\n${"─".repeat(60)}`);
