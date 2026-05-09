@@ -1,0 +1,24 @@
+{
+  "name": "notification-app-be",
+  "version": "1.0.0",
+  "description": "Campus notification platform backend — REST API + Stage 6 priority inbox.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "priority": "node src/priorityInbox.js"
+  },
+  "keywords": ["notifications", "campus", "priority-inbox", "heap"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

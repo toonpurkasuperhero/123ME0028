@@ -1,0 +1,22 @@
+REGISTRATION API RESULT
+{
+    "email": "123me0028@iiitk.ac.in",
+    "name": "pranjal mishra",
+    "rollNo": "123me0028",
+    "accessCode": "uZySAT",
+    "clientID": "9f896ffc-e0e9-4b52-8a8b-62015637350d",
+    "clientSecret": "XHHvHAFgufttUQAX"
+}
+
+AUTH API RESULT
+{
+    "token_type": "Bearer",
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiYXVkIjoiaHR0cDovLzIwLjI0NC41Ni4xNDQvZXZhbHVhdGlvbi1zZXJ2aWNlIiwiZW1haWwiOiIxMjNtZTAwMjhAaWlpdGsuYWMuaW4iLCJleHAiOjE3NzgzMDk0MTYsImlhdCI6MTc3ODMwODUxNiwiaXNzIjoiQWZmb3JkIE1lZGljYWwgVGVjaG5vbG9naWVzIFByaXZhdGUgTGltaXRlZCIsImp0aSI6ImYwMDBhYWJhLTI4MTgtNDBjMy05NzNmLTQzMGJiYzAwYmQxNSIsImxvY2FsZSI6ImVuLUlOIiwibmFtZSI6InByYW5qYWwgbWlzaHJhIiwic3ViIjoiOWY4OTZmZmMtZTBlOS00YjUyLThhOGItNjIwMTU2MzczNTBkIn0sImVtYWlsIjoiMTIzbWUwMDI4QGlpaXRrLmFjLmluIiwibmFtZSI6InByYW5qYWwgbWlzaHJhIiwicm9sbE5vIjoiMTIzbWUwMDI4IiwiYWNjZXNzQ29kZSI6InVaeVNBVCIsImNsaWVudElEIjoiOWY4OTZmZmMtZTBlOS00YjUyLThhOGItNjIwMTU2MzczNTBkIiwiY2xpZW50U2VjcmV0IjoiWEhIdkhBRmd1ZnR0VVFBWCJ9.k0sWTm6u3OZtOq3FiKuojIOHqlg2HJyDe465lDSfFTM",
+    "expires_in": 1778309416
+}
+
+LOG API RESULT
+{
+    "logID": "cd1de1c1-c5b8-482b-be58-7c7adc5f623e",
+    "message": "log created successfully"
+}
